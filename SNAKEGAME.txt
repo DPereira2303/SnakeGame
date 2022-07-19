@@ -1,0 +1,20 @@
+Game
+Snake
+
+Grid
+10x10
+
+Snake
+Head/tail rounded end rectangle shape, body rectangles
+
+Items
++ Adds length, - takes length off
+
+Movement
+Left and right key to change directions, into self takes off end of tail
+
+Game end
+Into self 3 times, into wall, Q key to quit, length of 10
+
+Score
+Every + or - changes score by 1, displayed at end of game
