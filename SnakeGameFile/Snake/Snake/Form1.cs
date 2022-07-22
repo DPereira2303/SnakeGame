@@ -17,6 +17,7 @@ namespace Snake
             //creates pen
             Graphics gr = GameGrid.CreateGraphics();
             Pen myPen = new Pen(Brushes.Black, 1);
+            Font myFont = new Font("Arial", 10);
             int lines = 10;
             float x = 0f;
             float y = 0f;
@@ -37,6 +38,36 @@ namespace Snake
                 gr.DrawLine(myPen, x, y, GameGrid.Width, y);
                 y += ySpace;
             }
+
+            string S = SNAKE();
+            x = 0f;
+            y = 0f;
+            int counter = 1;
+            for (int j = 0; j < lines; j++)
+            {
+                for (int k = 0; k < lines; k++)
+                {
+                    if (counter == 45)
+                    {
+                        gr.DrawString(S, myFont, Brushes.Black, x, y);
+                    }
+                    if (counter != 45)
+                    {
+                        gr.DrawString(Convert.ToString(counter), myFont, Brushes.Black, x, y);
+                    }
+                    x += xSpace;
+                    counter++;
+
+                }
+                y += ySpace;
+                x = 0;
+            }
+        }
+
+        public string SNAKE()
+        {
+            string snake = "Snake";
+            return snake;
         }
     }
 }
