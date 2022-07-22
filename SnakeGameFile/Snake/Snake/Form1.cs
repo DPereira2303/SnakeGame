@@ -5,6 +5,15 @@ namespace Snake
         public Form1()
         {
             InitializeComponent();
+            for (int i = 0; i < 4; i++)
+            {
+                GameGrid.Rows.Add();
+            }
+        }
+
+        private void GameGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

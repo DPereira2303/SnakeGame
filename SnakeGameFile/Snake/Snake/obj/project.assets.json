@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\djper\\OneDrive\\Desktop\\SnakeGameFile\\Snake\\Snake\\Snake.csproj",
+      "projectUniqueName": "C:\\Users\\djper\\Source\\Repos\\DPereira2303\\SnakeGame\\SnakeGameFile\\Snake\\Snake\\Snake.csproj",
       "projectName": "Snake",
-      "projectPath": "C:\\Users\\djper\\OneDrive\\Desktop\\SnakeGameFile\\Snake\\Snake\\Snake.csproj",
+      "projectPath": "C:\\Users\\djper\\Source\\Repos\\DPereira2303\\SnakeGame\\SnakeGameFile\\Snake\\Snake\\Snake.csproj",
       "packagesPath": "C:\\Users\\djper\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\djper\\OneDrive\\Desktop\\SnakeGameFile\\Snake\\Snake\\obj\\",
+      "outputPath": "C:\\Users\\djper\\Source\\Repos\\DPereira2303\\SnakeGame\\SnakeGameFile\\Snake\\Snake\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\djper\\AppData\\Roaming\\NuGet\\NuGet.Config",
