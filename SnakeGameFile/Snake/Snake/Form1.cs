@@ -13,34 +13,13 @@ namespace Snake
             //hides button
             StartButton.Visible = false;
 
-            int num = 45;
             createGrid(num);
 
-            System.Threading.Thread.Sleep(200);
-            int mnum = movement(0);
-            num += mnum;
-            createGrid(num);
 
         }
 
-        public int num = 0;
+        public int num = 45;
 
-        private int movement(int Movementnum)
-        {
-            
-
-            if (Movementnum == 0)
-            {
-                return num;
-            }
-            if (Movementnum != 0)
-            {
-                num = Movementnum;
-            }
-
-            return num;
-            
-        }
 
 
         private void createGrid(int num)
@@ -103,15 +82,25 @@ namespace Snake
             return snake;
         }
 
+        public int mnum = 0;
+
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
-            int num = 0;
+         
+            if (e.KeyCode == Keys.Up) { mnum = -10; }
+            if (e.KeyCode == Keys.Left) { mnum = -1; }
+            if (e.KeyCode == Keys.Down) { mnum = 10; }
+            if (e.KeyCode == Keys.Right) { mnum = 1; }
 
-            if (e.KeyCode == Keys.Up)
-            {
-                num = -10;
-                movement(num);
-            }
+        }
+
+        private void Form1_KeyUp(object sender, KeyEventArgs e)
+        {
+
+            //System.Threading.Thread.Sleep(200);
+            num += mnum;
+            createGrid(num);
+            if (num < 0) { mnum = 0; }
 
         }
     }

@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.GameGrid = new System.Windows.Forms.Panel();
-            this.StartButton = new System.Windows.Forms.Button();
             this.KeyboardButton = new System.Windows.Forms.Button();
+            this.StartButton = new System.Windows.Forms.Button();
             this.GameGrid.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -44,16 +44,6 @@
             this.GameGrid.Size = new System.Drawing.Size(909, 385);
             this.GameGrid.TabIndex = 0;
             // 
-            // StartButton
-            // 
-            this.StartButton.Location = new System.Drawing.Point(294, 134);
-            this.StartButton.Name = "StartButton";
-            this.StartButton.Size = new System.Drawing.Size(188, 90);
-            this.StartButton.TabIndex = 0;
-            this.StartButton.Text = "Start";
-            this.StartButton.UseVisualStyleBackColor = true;
-            this.StartButton.Click += new System.EventHandler(this.StartButton_Click);
-            // 
             // KeyboardButton
             // 
             this.KeyboardButton.Location = new System.Drawing.Point(26, 12);
@@ -63,6 +53,16 @@
             this.KeyboardButton.Text = "Keyboard";
             this.KeyboardButton.UseVisualStyleBackColor = true;
             this.KeyboardButton.Visible = false;
+            // 
+            // StartButton
+            // 
+            this.StartButton.Location = new System.Drawing.Point(294, 134);
+            this.StartButton.Name = "StartButton";
+            this.StartButton.Size = new System.Drawing.Size(188, 90);
+            this.StartButton.TabIndex = 0;
+            this.StartButton.Text = "Start";
+            this.StartButton.UseVisualStyleBackColor = true;
+            this.StartButton.Click += new System.EventHandler(this.StartButton_Click);
             // 
             // Form1
             // 
@@ -74,6 +74,7 @@
             this.Name = "Form1";
             this.Text = "Form1";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyUp);
             this.GameGrid.ResumeLayout(false);
             this.ResumeLayout(false);
 
