@@ -12,8 +12,18 @@ namespace Snake
         {
             //hides button
             StartButton.Visible = false;
-            
 
+            int num = 45;
+            createGrid(num);
+            System.Threading.Thread.Sleep(200);
+            num = 35;
+            createGrid(num);
+
+        }
+
+
+        private void createGrid(int num)
+        {
             //creates pen
             Graphics gr = GameGrid.CreateGraphics();
             Pen myPen = new Pen(Brushes.Black, 1);
@@ -23,6 +33,7 @@ namespace Snake
             float y = 0f;
             float xSpace = GameGrid.Width / lines;
             float ySpace = GameGrid.Height / lines;
+            gr.Clear(Color.White);
 
             //vertical lines
             for (int i = 0; i < lines; i++)
@@ -47,11 +58,11 @@ namespace Snake
             {
                 for (int k = 0; k < lines; k++)
                 {
-                    if (counter == 45)
+                    if (counter == num)
                     {
                         gr.DrawString(S, myFont, Brushes.Black, x, y);
                     }
-                    if (counter != 45)
+                    if (counter != num)
                     {
                         gr.DrawString(Convert.ToString(counter), myFont, Brushes.Black, x, y);
                     }
@@ -63,6 +74,7 @@ namespace Snake
                 x = 0;
             }
         }
+
 
         public string SNAKE()
         {
