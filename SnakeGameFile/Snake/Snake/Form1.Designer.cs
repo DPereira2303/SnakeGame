@@ -30,11 +30,13 @@
         {
             this.GameGrid = new System.Windows.Forms.Panel();
             this.StartButton = new System.Windows.Forms.Button();
+            this.KeyboardButton = new System.Windows.Forms.Button();
             this.GameGrid.SuspendLayout();
             this.SuspendLayout();
             // 
             // GameGrid
             // 
+            this.GameGrid.Controls.Add(this.KeyboardButton);
             this.GameGrid.Controls.Add(this.StartButton);
             this.GameGrid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.GameGrid.Location = new System.Drawing.Point(0, 0);
@@ -52,14 +54,26 @@
             this.StartButton.UseVisualStyleBackColor = true;
             this.StartButton.Click += new System.EventHandler(this.StartButton_Click);
             // 
+            // KeyboardButton
+            // 
+            this.KeyboardButton.Location = new System.Drawing.Point(26, 12);
+            this.KeyboardButton.Name = "KeyboardButton";
+            this.KeyboardButton.Size = new System.Drawing.Size(94, 29);
+            this.KeyboardButton.TabIndex = 1;
+            this.KeyboardButton.Text = "Keyboard";
+            this.KeyboardButton.UseVisualStyleBackColor = true;
+            this.KeyboardButton.Visible = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(909, 385);
             this.Controls.Add(this.GameGrid);
+            this.KeyPreview = true;
             this.Name = "Form1";
             this.Text = "Form1";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             this.GameGrid.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -69,5 +83,6 @@
 
         private Panel GameGrid;
         private Button StartButton;
+        private Button KeyboardButton;
     }
 }

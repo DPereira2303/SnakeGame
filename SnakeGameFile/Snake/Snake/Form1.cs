@@ -15,10 +15,31 @@ namespace Snake
 
             int num = 45;
             createGrid(num);
+
             System.Threading.Thread.Sleep(200);
-            num = 35;
+            int mnum = movement(0);
+            num += mnum;
             createGrid(num);
 
+        }
+
+        public int num = 0;
+
+        private int movement(int Movementnum)
+        {
+            
+
+            if (Movementnum == 0)
+            {
+                return num;
+            }
+            if (Movementnum != 0)
+            {
+                num = Movementnum;
+            }
+
+            return num;
+            
         }
 
 
@@ -80,6 +101,18 @@ namespace Snake
         {
             string snake = "Snake";
             return snake;
+        }
+
+        private void Form1_KeyDown(object sender, KeyEventArgs e)
+        {
+            int num = 0;
+
+            if (e.KeyCode == Keys.Up)
+            {
+                num = -10;
+                movement(num);
+            }
+
         }
     }
 }
