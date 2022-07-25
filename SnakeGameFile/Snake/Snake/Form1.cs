@@ -97,10 +97,13 @@ namespace Snake
         private void Form1_KeyUp(object sender, KeyEventArgs e)
         {
 
-            //System.Threading.Thread.Sleep(200);
-            num += mnum;
-            createGrid(num);
-            if (num < 0) { mnum = 0; }
+            while (true)
+            {
+                System.Threading.Thread.Sleep(200);
+                num += mnum;
+                createGrid(num);
+                if (num < 0) { num -= mnum; createGrid(num); break; }
+            }
 
         }
     }
