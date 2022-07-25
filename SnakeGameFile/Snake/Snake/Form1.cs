@@ -8,8 +8,10 @@ namespace Snake
 
         }
 
+        public int COUNT = 1;
         private void StartButton_Click(object sender, EventArgs e)
         {
+            
             //hides button
             StartButton.Visible = false;
 
@@ -19,6 +21,8 @@ namespace Snake
         }
 
         public int num = 45;
+        public float PlayerX = 0;
+        public float PlayerY = 0;
 
 
 
@@ -54,25 +58,54 @@ namespace Snake
             x = 0f;
             y = 0f;
             int counter = 1;
-            for (int j = 0; j < lines; j++)
-            {
-                for (int k = 0; k < lines; k++)
-                {
-                    if (counter == num)
-                    {
-                        gr.DrawString(S, myFont, Brushes.Black, x, y);
-                    }
-                    if (counter != num)
-                    {
-                        gr.DrawString(Convert.ToString(counter), myFont, Brushes.Black, x, y);
-                    }
-                    x += xSpace;
-                    counter++;
 
+            if (COUNT == 1)
+            {
+                for (int j = 0; j < lines; j++)
+                {
+                    for (int k = 0; k < lines; k++)
+                    {
+                        if (counter == num)
+                        {
+                            gr.DrawString(Convert.ToString(counter), myFont, Brushes.Black, x, y);
+                            gr.DrawEllipse(myPen, x + 25, y + 5, 25, 25);
+                            PlayerX = x + 25;
+                            PlayerY = y + 5;
+
+                        }
+                        if (counter != num)
+                        {
+                            gr.DrawString(Convert.ToString(counter), myFont, Brushes.Black, x, y);
+                        }
+                        x += xSpace;
+                        counter++;
+
+                    }
+                    y += ySpace;
+                    x = 0;
                 }
-                y += ySpace;
-                x = 0;
+                
             }
+
+            if (COUNT != 1)
+            {
+                for (int j = 0; j < lines; j++)
+                {
+                    for (int k = 0; k < lines; k++)
+                    {
+                        
+                        gr.DrawString(Convert.ToString(counter), myFont, Brushes.Black, x, y);
+                        gr.DrawEllipse(myPen, PlayerX, PlayerY, 25, 25);
+                        x += xSpace;
+                        
+                        counter++;
+
+                    }
+                    y += ySpace;
+                    x = 0;
+                }
+            }
+            COUNT++;
         }
 
 
@@ -83,27 +116,34 @@ namespace Snake
         }
 
         public int mnum = 0;
+        public bool UDKeyPressed = false;
+        public int move = 0;
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
-         
-            if (e.KeyCode == Keys.Up) { mnum = -10; }
-            if (e.KeyCode == Keys.Left) { mnum = -1; }
-            if (e.KeyCode == Keys.Down) { mnum = 10; }
-            if (e.KeyCode == Keys.Right) { mnum = 1; }
 
+
+            if (e.KeyCode == Keys.Up) { move = -25; UDKeyPressed = true; }
+            if (e.KeyCode == Keys.Down) { move = 25; UDKeyPressed = true; }
+            if (e.KeyCode == Keys.Left) { move = -25; UDKeyPressed = false; }
+            if (e.KeyCode == Keys.Right) { move = 25; UDKeyPressed = false; }
+
+
+        }
+
+        private void Movement()
+        {
+            while (UDKeyPressed == true)
+            {
+                PlayerY += move;
+                createGrid(0);
+            }
         }
 
         private void Form1_KeyUp(object sender, KeyEventArgs e)
         {
 
-            while (true)
-            {
-                System.Threading.Thread.Sleep(200);
-                num += mnum;
-                createGrid(num);
-                if (num < 0) { num -= mnum; createGrid(num); break; }
-            }
+           
 
         }
     }
