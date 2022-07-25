@@ -28,9 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.GameGrid = new System.Windows.Forms.Panel();
             this.KeyboardButton = new System.Windows.Forms.Button();
             this.StartButton = new System.Windows.Forms.Button();
+            this.SnakeDirection = new System.Windows.Forms.Timer(this.components);
             this.GameGrid.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -64,6 +66,11 @@
             this.StartButton.UseVisualStyleBackColor = true;
             this.StartButton.Click += new System.EventHandler(this.StartButton_Click);
             // 
+            // SnakeDirection
+            // 
+            this.SnakeDirection.Enabled = true;
+            this.SnakeDirection.Tick += new System.EventHandler(this.SnakeDirection_Tick);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -85,5 +92,6 @@
         private Panel GameGrid;
         private Button StartButton;
         private Button KeyboardButton;
+        private System.Windows.Forms.Timer SnakeDirection;
     }
 }

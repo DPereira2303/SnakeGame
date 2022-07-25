@@ -37,7 +37,7 @@ namespace Snake
             float y = 0f;
             float xSpace = GameGrid.Width / lines;
             float ySpace = GameGrid.Height / lines;
-            gr.Clear(Color.White);
+            //gr.Clear(Color.White);
 
             //vertical lines
             for (int i = 0; i < lines; i++)
@@ -89,21 +89,9 @@ namespace Snake
 
             if (COUNT != 1)
             {
-                for (int j = 0; j < lines; j++)
-                {
-                    for (int k = 0; k < lines; k++)
-                    {
-                        
-                        gr.DrawString(Convert.ToString(counter), myFont, Brushes.Black, x, y);
-                        gr.DrawEllipse(myPen, PlayerX, PlayerY, 25, 25);
-                        x += xSpace;
-                        
-                        counter++;
 
-                    }
-                    y += ySpace;
-                    x = 0;
-                }
+                gr.DrawEllipse(myPen, PlayerX, PlayerY, 25, 25);
+
             }
             COUNT++;
         }
@@ -123,21 +111,12 @@ namespace Snake
         {
 
 
-            if (e.KeyCode == Keys.Up) { move = -25; UDKeyPressed = true; }
-            if (e.KeyCode == Keys.Down) { move = 25; UDKeyPressed = true; }
-            if (e.KeyCode == Keys.Left) { move = -25; UDKeyPressed = false; }
-            if (e.KeyCode == Keys.Right) { move = 25; UDKeyPressed = false; }
+            if (e.KeyCode == Keys.Up) { CurrentDirection = "Up"; }
+            if (e.KeyCode == Keys.Down) { CurrentDirection = "Down"; }
+            if (e.KeyCode == Keys.Left) { CurrentDirection = "Left"; }
+            if (e.KeyCode == Keys.Right) { CurrentDirection = "Right"; }
 
 
-        }
-
-        private void Movement()
-        {
-            while (UDKeyPressed == true)
-            {
-                PlayerY += move;
-                createGrid(0);
-            }
         }
 
         private void Form1_KeyUp(object sender, KeyEventArgs e)
@@ -145,6 +124,15 @@ namespace Snake
 
            
 
+        }
+
+        public string CurrentDirection = "None";
+        private void SnakeDirection_Tick(object sender, EventArgs e)
+        {
+            if (CurrentDirection == "Up") { PlayerY -= 25; createGrid(0); }
+            if (CurrentDirection == "Down") { PlayerY += 25; createGrid(0); }
+            if (CurrentDirection == "Left") { PlayerX -= 25; createGrid(0); }
+            if (CurrentDirection == "Right") { PlayerX += 25; createGrid(0); }
         }
     }
 }
