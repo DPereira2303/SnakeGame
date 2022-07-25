@@ -30,6 +30,7 @@ namespace Snake
         {
             //creates pen
             Graphics gr = GameGrid.CreateGraphics();
+            Graphics snake = GameGrid.CreateGraphics();
             Pen myPen = new Pen(Brushes.Black, 1);
             Font myFont = new Font("Arial", 10);
             int lines = 10;
@@ -39,28 +40,28 @@ namespace Snake
             float ySpace = GameGrid.Height / lines;
             //gr.Clear(Color.White);
 
-            //vertical lines
-            for (int i = 0; i < lines; i++)
-            {
-                gr.DrawLine(myPen, x, y, x, GameGrid.Height);
-                x += xSpace;
-            }
-
-            //horizontal lines
-            x = 0f;
-            for (int i = 0; i < lines; i++)
-            {
-                gr.DrawLine(myPen, x, y, GameGrid.Width, y);
-                y += ySpace;
-            }
-
-            string S = SNAKE();
-            x = 0f;
-            y = 0f;
-            int counter = 1;
-
             if (COUNT == 1)
             {
+                //vertical lines
+                for (int i = 0; i < lines; i++)
+                {
+                    gr.DrawLine(myPen, x, y, x, GameGrid.Height);
+                    x += xSpace;
+                }
+
+                //horizontal lines
+                x = 0f;
+                for (int i = 0; i < lines; i++)
+                {
+                    gr.DrawLine(myPen, x, y, GameGrid.Width, y);
+                    y += ySpace;
+                }
+
+                x = 0f;
+                y = 0f;
+                int counter = 1;
+
+            
                 for (int j = 0; j < lines; j++)
                 {
                     for (int k = 0; k < lines; k++)
@@ -68,7 +69,7 @@ namespace Snake
                         if (counter == num)
                         {
                             gr.DrawString(Convert.ToString(counter), myFont, Brushes.Black, x, y);
-                            gr.DrawEllipse(myPen, x + 25, y + 5, 25, 25);
+                            snake.DrawEllipse(myPen, x + 25, y + 5, 25, 25);
                             PlayerX = x + 25;
                             PlayerY = y + 5;
 
@@ -90,22 +91,11 @@ namespace Snake
             if (COUNT != 1)
             {
 
-                gr.DrawEllipse(myPen, PlayerX, PlayerY, 25, 25);
+                snake.DrawEllipse(myPen, PlayerX, PlayerY, 25, 25);
 
             }
             COUNT++;
         }
-
-
-        public string SNAKE()
-        {
-            string snake = "Snake";
-            return snake;
-        }
-
-        public int mnum = 0;
-        public bool UDKeyPressed = false;
-        public int move = 0;
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
@@ -119,12 +109,6 @@ namespace Snake
 
         }
 
-        private void Form1_KeyUp(object sender, KeyEventArgs e)
-        {
-
-           
-
-        }
 
         public string CurrentDirection = "None";
         private void SnakeDirection_Tick(object sender, EventArgs e)
