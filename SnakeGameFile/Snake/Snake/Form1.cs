@@ -39,9 +39,10 @@ namespace Snake
             float xSpace = GameGrid.Width / lines;
             float ySpace = GameGrid.Height / lines;
             //gr.Clear(Color.White);
+            snake.Clear(Color.White);
+            Thread.Sleep(250);
 
-            if (COUNT == 1)
-            {
+
                 //vertical lines
                 for (int i = 0; i < lines; i++)
                 {
@@ -68,10 +69,19 @@ namespace Snake
                     {
                         if (counter == num)
                         {
-                            gr.DrawString(Convert.ToString(counter), myFont, Brushes.Black, x, y);
-                            snake.DrawEllipse(myPen, x + 25, y + 5, 25, 25);
-                            PlayerX = x + 25;
-                            PlayerY = y + 5;
+                            if (COUNT == 1)
+                            {
+                                gr.DrawString(Convert.ToString(counter), myFont, Brushes.Black, x, y);
+                                snake.DrawEllipse(myPen, x + 25, y + 5, 25, 25);
+                                PlayerX = x + 25;
+                                PlayerY = y + 5;
+                            }
+                            if (COUNT != 1)
+                            {
+                                snake.DrawEllipse(myPen, PlayerX, PlayerY, 25, 25);
+
+                            }
+                            COUNT++;
 
                         }
                         if (counter != num)
@@ -86,15 +96,9 @@ namespace Snake
                     x = 0;
                 }
                 
-            }
+            
 
-            if (COUNT != 1)
-            {
-
-                snake.DrawEllipse(myPen, PlayerX, PlayerY, 25, 25);
-
-            }
-            COUNT++;
+          
         }
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
