@@ -90,7 +90,7 @@ namespace Snake
 
             if (COUNT != 1)
             {
-
+                
                 snake.DrawEllipse(myPen, PlayerX, PlayerY, 25, 25);
 
             }
