@@ -15,18 +15,17 @@ namespace Snake
             //hides button
             StartButton.Visible = false;
 
-            createGrid(num);
+            createGrid();
 
 
         }
 
-        public int num = 45;
         public float PlayerX = 0;
         public float PlayerY = 0;
 
 
 
-        private void createGrid(int num)
+        private void createGrid()
         {
             //creates pen
             Graphics gr = GameGrid.CreateGraphics();
@@ -39,9 +38,10 @@ namespace Snake
             float xSpace = GameGrid.Width / lines;
             float ySpace = GameGrid.Height / lines;
             //gr.Clear(Color.White);
+            snake.Clear(Color.White);
+            //Thread.Sleep(250);
 
-            if (COUNT == 1)
-            {
+
                 //vertical lines
                 for (int i = 0; i < lines; i++)
                 {
@@ -61,41 +61,29 @@ namespace Snake
                 y = 0f;
                 int counter = 1;
 
+            snake.DrawEllipse(myPen, PlayerX, PlayerY, 25, 25);
             
-                for (int j = 0; j < lines; j++)
-                {
-                    for (int k = 0; k < lines; k++)
-                    {
-                        if (counter == num)
-                        {
-                            gr.DrawString(Convert.ToString(counter), myFont, Brushes.Black, x, y);
-                            snake.DrawEllipse(myPen, x + 25, y + 5, 25, 25);
-                            PlayerX = x + 25;
-                            PlayerY = y + 5;
-
-                        }
-                        if (counter != num)
-                        {
-                            gr.DrawString(Convert.ToString(counter), myFont, Brushes.Black, x, y);
-                        }
-                        x += xSpace;
-                        counter++;
-
-                    }
-                    y += ySpace;
-                    x = 0;
-                }
-                
-            }
-
-            if (COUNT != 1)
+            for (int j = 0; j < lines; j++)
             {
-                
-                snake.DrawEllipse(myPen, PlayerX, PlayerY, 25, 25);
+                for (int k = 0; k < lines; k++)
+                {
 
+                    //gr.DrawString(Convert.ToString(counter), myFont, Brushes.Black, x, y);
+                    //THIS WILL BE USEFUL FOR CREATING ITEMS FOR THE SNAKE TO CONSUME
+
+                    x += xSpace;
+                    counter++;
+
+                }
+                y += ySpace;
+                x = 0;
             }
-            COUNT++;
+
+
+
+
         }
+
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
@@ -113,10 +101,10 @@ namespace Snake
         public string CurrentDirection = "None";
         private void SnakeDirection_Tick(object sender, EventArgs e)
         {
-            if (CurrentDirection == "Up") { PlayerY -= 25; createGrid(0); }
-            if (CurrentDirection == "Down") { PlayerY += 25; createGrid(0); }
-            if (CurrentDirection == "Left") { PlayerX -= 25; createGrid(0); }
-            if (CurrentDirection == "Right") { PlayerX += 25; createGrid(0); }
+            if (CurrentDirection == "Up") { PlayerY -= 25; createGrid(); }
+            if (CurrentDirection == "Down") { PlayerY += 25; createGrid(); }
+            if (CurrentDirection == "Left") { PlayerX -= 25; createGrid(); }
+            if (CurrentDirection == "Right") { PlayerX += 25; createGrid(); }
         }
     }
 }
