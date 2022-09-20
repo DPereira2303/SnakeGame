@@ -22,7 +22,7 @@ namespace Snake
 
         public float PlayerX = 0;
         public float PlayerY = 0;
-
+        public bool ITEM = false;
 
 
         private void createGrid()
@@ -61,8 +61,16 @@ namespace Snake
                 y = 0f;
                 int counter = 1;
 
-            snake.DrawEllipse(myPen, PlayerX, PlayerY, 25, 25);
-            
+            //snake.DrawEllipse(myPen, PlayerX, PlayerY, 25, 25);
+            ITEM = true;
+
+            if (ITEM == true)
+            {
+                snake.DrawEllipse(myPen, PlayerX, PlayerY, 25, 25);
+                snake.DrawEllipse(myPen, PlayerX - 25, PlayerY, 25, 25);
+            }
+
+
             for (int j = 0; j < lines; j++)
             {
                 for (int k = 0; k < lines; k++)
@@ -70,6 +78,7 @@ namespace Snake
                     if (counter == 25)
                     {
                         gr.DrawEllipse(myPen, x + 35, y + 12, 15, 15);
+                        //if (PlayerX == x+35 && PlayerY == y+12) { ITEM = true; }
                     }
                     //THIS WILL BE USEFUL FOR CREATING ITEMS FOR THE SNAKE TO CONSUME
 
