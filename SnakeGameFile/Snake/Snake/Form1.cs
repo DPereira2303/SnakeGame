@@ -67,8 +67,10 @@ namespace Snake
             {
                 for (int k = 0; k < lines; k++)
                 {
-
-                    //gr.DrawString(Convert.ToString(counter), myFont, Brushes.Black, x, y);
+                    if (counter == 25)
+                    {
+                        gr.DrawEllipse(myPen, x + 35, y + 12, 15, 15);
+                    }
                     //THIS WILL BE USEFUL FOR CREATING ITEMS FOR THE SNAKE TO CONSUME
 
                     x += xSpace;
